@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    
+    <script>
+        let computerRoundsWon = 0;
+        let playerRoundsWon = 0;
+        let numberOfRounds = 5;
+
+        const computerRandom = function(){
+            let randChoice = ['Rock', 'Paper', 'Scissors'];
+            return (randChoice[Math.floor(Math.random() * 3)]);
+            }
+        
+       
+        function playRound(playerSelection, computerSelection)
+        {
+            
+            playerSelection = prompt("What do you choose betwen Rock, Paper or Scissors?");
+            computerSelection = computerRandom();
+
+            if(playerSelection === "Rock" && computerSelection === "Scissors")
+            {
+                console.log("You Won this round!");
+                playerRoundsWon++;
+                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
+                
+            }
+            if(playerSelection === "Paper" && computerSelection === "Rock")
+            {
+                console.log("You Won this round!");
+                playerRoundsWon++;
+                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
+            }
+            if(playerSelection === "Scissors" && computerSelection === "Paper")
+            {
+                console.log("You Won this round!");
+                playerRoundsWon++;
+                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
+            }
+            if(playerSelection === "Scissors" && computerSelection === "Rock")
+            {
+                console.log("You Lost this round!");
+                computerRoundsWon++;
+                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
+            }
+            if(playerSelection === "Rock" && computerSelection === "Paper")
+            {
+                console.log("You Lost this round!");
+                computerRoundsWon++;
+                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
+            }
+            if(playerSelection === "Paper" && computerSelection === "Scissors")
+            {
+                console.log("You Lost this round!");
+                computerRoundsWon++;
+                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
+            }
+            if(playerSelection === "Rock" && computerSelection === "Rock")
+            {
+                console.log("It's a tie!");
+                return ("It's a tie!");   
+            }
+            if(playerSelection === "Scissors" && computerSelection === "Scissors")
+            {
+                console.log("It's a tie!");
+                return ("It's a tie!");
+            }
+            if(playerSelection === "Paper" && computerSelection === "Paper")
+            {
+                console.log("It's a tie!");
+                return ("IT's a tie!");
+            }
+          
+            
+            
+        }
+        const game = function(){
+            
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+
+            if(playerRoundsWon > computerRoundsWon)
+            {
+                alert("You Won The Game!");
+            }
+            if(computerRoundsWon > playerRoundsWon)
+            {
+                alert("You Lost The Game!");
+            }
+        }
+    </script>
+</body>
+</html>
