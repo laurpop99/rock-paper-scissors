@@ -5,11 +5,151 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <div id="container"></div>
     
     <script>
         let computerRoundsWon = 0;
         let playerRoundsWon = 0;
         let numberOfRounds = 5;
+        
+        let header = document.createElement('H1');
+        header.textContent = 'Choose an option below!';
+        header.style.textAlign = 'center';
+        header.style.color = "#FA4B9F";
+        container.appendChild(header);
+        let buttons = document.createElement('div');
+        // buttons.style.border = "3px solid pink";
+        buttons.style.margin = "auto";
+        buttons.style.display = "block";
+        buttons.style.width = "auto";
+        buttons.style.padding = "10px";
+        buttons.style.textAlign = "center";
+        
+        let button1 = document.createElement('button');
+        button1.textContent = "Rock";
+        button1.style.padding = "10px";
+        button1.style.width ="100px";
+        let button2 = document.createElement('button');
+        button2.textContent = "Paper";
+        button2.style.padding = "10px";
+        button2.style.marginLeft = "10px";
+        button2.style.width ="100px";
+        let button3 = document.createElement('button');
+        button3.textContent = "Scissors";
+        button3.style.padding = "10px";
+        button3.style.marginLeft = "10px";
+        button3.style.width ="100px";
+        
+        buttons.appendChild(button1);
+        buttons.appendChild(button2);
+        buttons.appendChild(button3);
+        container.appendChild(buttons);
+
+        header2 = document.createElement("h2");
+        header2.textContent = "SCORE";
+        header2.style.textAlign = "center";
+        header2.style.fontSize = "36px";
+        container.appendChild(header2);
+
+        yourHeader = document.createElement("h3");
+        yourHeader.style.fontSize = "24px";
+        yourHeader.style.textAlign = "center";
+        yourHeader.textContent = "You: ";
+        yourHeader.style.display = "inline";
+        yourHeader.style.marginLeft = "40%";
+        container.appendChild(yourHeader);
+        
+
+        yourScore = document.createElement("h3");
+        yourScore.style.textAlign = "center";
+        yourScore.style.fontSize = "24px";
+        yourScore.style.display = "inline";
+        
+        container.appendChild(yourScore);
+
+        compHeader = document.createElement("h3");
+        compHeader.style.textAlign = "center";
+        compHeader.style.fontSize = "24px";
+        compHeader.textContent = "Computer: ";
+        compHeader.style.display = "inline";
+        container.appendChild(compHeader);
+        compHeader.style.marginLeft = "10%";
+        
+
+        compScore = document.createElement("h3");
+        compScore.style.textAlign = "center";
+        compScore.style.fontSize = "24px";
+        compScore.style.display = "inline";
+        
+        container.appendChild(compScore);
+
+        scoreText = document.createElement("h4");
+        scoreText.style.fontSize = "36px";
+        scoreText.style.textAlign = "center";
+        container.appendChild(scoreText);
+        
+        
+
+        button1.addEventListener("click", function(){
+            playRound("Rock");
+            yourScore.textContent = playerRoundsWon;
+            compScore.textContent = computerRoundsWon;
+            if(playerRoundsWon === numberOfRounds)
+            {
+                alert("YOU WON!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+
+            if(computerRoundsWon === numberOfRounds)
+            {
+                alert("YOU LOST!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+        })
+
+        button2.addEventListener("click", function(){
+            
+            playRound("Paper");
+            yourScore.textContent = playerRoundsWon;
+            compScore.textContent = computerRoundsWon;
+            if(playerRoundsWon === numberOfRounds)
+            {
+                alert("YOU WON!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+
+            if(computerRoundsWon === numberOfRounds)
+            {
+                alert("YOU LOST!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+           
+        })
+
+        button3.addEventListener("click", function(){
+            
+            playRound("Scissors");
+            yourScore.textContent = playerRoundsWon;
+            compScore.textContent = computerRoundsWon;
+            if(playerRoundsWon === numberOfRounds)
+            {
+                alert("YOU WON!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+
+            if(computerRoundsWon === numberOfRounds)
+            {
+                alert("YOU LOST!");
+                playerRoundsWon = 0;
+                computerRoundsWon = 0;
+            }
+        })
+
 
         const computerRandom = function(){
             let randChoice = ['Rock', 'Paper', 'Scissors'];
@@ -20,78 +160,78 @@
         function playRound(playerSelection, computerSelection)
         {
             
-            playerSelection = prompt("What do you choose betwen Rock, Paper or Scissors?");
+           
             computerSelection = computerRandom();
 
             if(playerSelection === "Rock" && computerSelection === "Scissors")
             {
-                console.log("You Won this round!");
+                scoreText.textContent = "You Won this round!";
                 playerRoundsWon++;
-                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
+                
                 
                 
             }
             if(playerSelection === "Paper" && computerSelection === "Rock")
             {
-                console.log("You Won this round!");
+                scoreText.textContent = "You Won this round!";
                 playerRoundsWon++;
-                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
                 
             }
             if(playerSelection === "Scissors" && computerSelection === "Paper")
             {
-                console.log("You Won this round!");
+                scoreText.textContent ="You Won this round!";
                 playerRoundsWon++;
-                return ("You Won! " + playerSelection + " beats " + computerSelection);
+                
                 
             }
             if(playerSelection === "Scissors" && computerSelection === "Rock")
             {
-                console.log("You Lost this round!");
+                scoreText.textContent ="You Lost this round!";
                 computerRoundsWon++;
-                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
                 
             }
             if(playerSelection === "Rock" && computerSelection === "Paper")
             {
-                console.log("You Lost this round!");
+                scoreText.textContent ="You Lost this round!";
                 computerRoundsWon++;
-                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
                 
             }
             if(playerSelection === "Paper" && computerSelection === "Scissors")
             {
-                console.log("You Lost this round!");
+                scoreText.textContent ="You Lost this round!";
                 computerRoundsWon++;
-                return ("You Lost! " + playerSelection + " loses to " + computerSelection);
+                
                 
             }
             if(playerSelection === "Rock" && computerSelection === "Rock")
             {
-                console.log("It's a tie!");
-                return ("It's a tie!");   
+                scoreText.textContent ="It's a tie!";
+                   
             }
             if(playerSelection === "Scissors" && computerSelection === "Scissors")
             {
-                console.log("It's a tie!");
-                return ("It's a tie!");
+                scoreText.textContent = "It's a tie!";
+                
             }
             if(playerSelection === "Paper" && computerSelection === "Paper")
             {
-                console.log("It's a tie!");
-                return ("IT's a tie!");
+                scoreText.textContent ="It's a tie!";
+                
             }
           
             
             
         }
         const game = function(){
+            while(playerRoundsWon < numberOfRounds && computerRoundsWon < numberOfRounds)
+            {
+            playRound();
+            }
             
-            playRound();
-            playRound();
-            playRound();
-            playRound();
-            playRound();
 
             if(playerRoundsWon > computerRoundsWon)
             {
